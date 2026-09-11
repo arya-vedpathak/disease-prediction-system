@@ -1,0 +1,92 @@
+USE disease_prediction_db;
+
+-- Symptoms
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Fever');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Headache');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Cough');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Fatigue');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Nausea');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Vomiting');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Joint Pain');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Skin Rash');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Chills');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Sore Throat');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Body Ache');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Diarrhea');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Abdominal Pain');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Loss Of Appetite');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Dizziness');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Shortness Of Breath');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Chest Pain');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Runny Nose');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Sneezing');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Sweating');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Weight Loss');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Frequent Urination');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Excessive Thirst');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Blurred Vision');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Yellowing Of Eyes');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Dark Urine');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Constipation');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Muscle Weakness');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Night Sweats');
+INSERT IGNORE INTO symptoms_master (symptom_name) VALUES ('Swollen Lymph Nodes');
+
+-- Diseases
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Typhoid', 'General Medicine');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Common Cold', 'General Medicine');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Influenza (Flu)', 'General Medicine');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Malaria', 'General Medicine');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Dengue', 'General Medicine');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Migraine', 'Neurology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Gastroenteritis', 'Gastroenterology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Diabetes (Type 2)', 'Endocrinology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Hepatitis A', 'Gastroenterology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Asthma', 'Pulmonology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Tuberculosis', 'Pulmonology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Rheumatoid Arthritis', 'Orthopedics');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Chickenpox', 'Dermatology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Urinary Tract Infection', 'Urology');
+INSERT IGNORE INTO diseases_master (disease_name, specialization) VALUES ('Anemia', 'General Medicine');
+
+-- Medicines
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Azithromycin', '500mg once daily for 7 days' FROM diseases_master WHERE disease_name='Typhoid';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed for fever' FROM diseases_master WHERE disease_name='Typhoid';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Cetirizine', '10mg once daily' FROM diseases_master WHERE disease_name='Common Cold';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed for fever/pain' FROM diseases_master WHERE disease_name='Common Cold';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Oseltamivir', '75mg twice daily for 5 days' FROM diseases_master WHERE disease_name='Influenza (Flu)';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed' FROM diseases_master WHERE disease_name='Influenza (Flu)';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Artemether-Lumefantrine', 'As per weight-based dosing' FROM diseases_master WHERE disease_name='Malaria';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed for fever' FROM diseases_master WHERE disease_name='Malaria';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed for fever - avoid NSAIDs' FROM diseases_master WHERE disease_name='Dengue';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'ORS', 'Maintain hydration' FROM diseases_master WHERE disease_name='Dengue';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Sumatriptan', '50mg at onset' FROM diseases_master WHERE disease_name='Migraine';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Ibuprofen', '400mg as needed' FROM diseases_master WHERE disease_name='Migraine';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'ORS', 'Rehydration solution' FROM diseases_master WHERE disease_name='Gastroenteritis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Ondansetron', '4mg for nausea' FROM diseases_master WHERE disease_name='Gastroenteritis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Metformin', '500mg twice daily' FROM diseases_master WHERE disease_name='Diabetes (Type 2)';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Lifestyle & diet counseling', 'Ongoing' FROM diseases_master WHERE disease_name='Diabetes (Type 2)';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Supportive care', 'Rest & hydration' FROM diseases_master WHERE disease_name='Hepatitis A';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol (low dose)', 'Avoid liver-toxic drugs' FROM diseases_master WHERE disease_name='Hepatitis A';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Salbutamol inhaler', 'As needed for attacks' FROM diseases_master WHERE disease_name='Asthma';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Budesonide inhaler', 'Daily maintenance' FROM diseases_master WHERE disease_name='Asthma';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Rifampicin + Isoniazid', 'As per DOTS regimen' FROM diseases_master WHERE disease_name='Tuberculosis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Pyridoxine', 'Supportive' FROM diseases_master WHERE disease_name='Tuberculosis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Methotrexate', 'Weekly, as prescribed' FROM diseases_master WHERE disease_name='Rheumatoid Arthritis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Ibuprofen', 'For pain/inflammation' FROM diseases_master WHERE disease_name='Rheumatoid Arthritis';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Calamine lotion', 'Apply on rashes' FROM diseases_master WHERE disease_name='Chickenpox';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Paracetamol', 'As needed for fever' FROM diseases_master WHERE disease_name='Chickenpox';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Nitrofurantoin', '100mg twice daily for 5 days' FROM diseases_master WHERE disease_name='Urinary Tract Infection';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Increase fluid intake', 'Ongoing' FROM diseases_master WHERE disease_name='Urinary Tract Infection';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Ferrous sulfate', '1 tablet daily' FROM diseases_master WHERE disease_name='Anemia';
+INSERT INTO disease_medicine (disease_id, medicine_name, dosage_note) SELECT disease_id, 'Vitamin B12/Folic acid', 'As prescribed' FROM diseases_master WHERE disease_name='Anemia';
+
+-- Hospitals
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('City General Hospital', 'General Medicine', 'MG Road', '022-2345001');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('Neuro Care Institute', 'Neurology', 'Andheri West', '022-2345002');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('Digestive Health Center', 'Gastroenterology', 'Dadar', '022-2345003');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('Metro Diabetes & Endocrine Clinic', 'Endocrinology', 'Bandra', '022-2345004');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('Lung & Chest Care Hospital', 'Pulmonology', 'Powai', '022-2345005');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('OrthoLife Hospital', 'Orthopedics', 'Thane', '022-2345006');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('SkinCare Multispeciality', 'Dermatology', 'Vashi', '022-2345007');
+INSERT INTO hospitals (name, specialization, location, contact) VALUES ('Urology & Kidney Institute', 'Urology', 'Kurla', '022-2345008');
